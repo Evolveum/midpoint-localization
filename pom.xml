@@ -57,8 +57,11 @@
 	<build>
 	    <resources>
 	        <resource>
-	            <directory>localization</directory>
+	            <directory>${project.basedir}</directory>
 	            <filtering>true</filtering>
+                    <includes>
+                        <include>localization/*</include>
+                    </includes>
 	        </resource>
 	    </resources>
 	</build>
