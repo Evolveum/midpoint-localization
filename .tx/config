@@ -1,0 +1,15 @@
+[main]
+host = https://www.transifex.com
+
+[midpoint.admin-gui]
+file_filter = localization/Midpoint_<lang>.properties
+source_file = localization/Midpoint.properties
+source_lang = en
+type = UNICODEPROPERTIES
+
+[midpoint.schema]
+file_filter = localization/schema_<lang>.properties
+source_file = localization/schema.properties
+source_lang = en
+type = UNICODEPROPERTIES
+
