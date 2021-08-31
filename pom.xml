@@ -20,7 +20,7 @@
 
     <groupId>com.evolveum.midpoint</groupId>
     <artifactId>midpoint-localization</artifactId>
-    <version>4.4-SNAPSHOT</version>
+    <version>4.4-M3</version>
     <packaging>jar</packaging>
 
     <name>midPoint Localization</name>
