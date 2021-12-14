@@ -20,7 +20,7 @@
 	<name>midPoint Localization</name>
 	<groupId>com.evolveum.midpoint</groupId>
 	<artifactId>midpoint-localization</artifactId>
-	<version>4.0.4-SNAPSHOT</version>
+	<version>4.0.4</version>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
