@@ -25,7 +25,7 @@ podTemplate(
 ) {
     node(POD_LABEL) {
         stage("checkout") {
-            git branch: params.BRANCH ?: 'master',
+            git branch: params.BRANCH ?: 'support-4.6',
                     url: 'https://github.com/Evolveum/midpoint-localization.git'
             echo "git checkout done..."
         }
