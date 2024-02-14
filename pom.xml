@@ -44,8 +44,8 @@
         <url>https://github.com/Evolveum/midpoint-samples</url>
     </scm>
     <issueManagement>
-        <system>Atlassian JIRA</system>
-        <url>https://jira.evolveum.com/</url>
+        <system>OpenProject</system>
+        <url>https://support.evolveum.com/</url>
     </issueManagement>
     <distributionManagement>
         <repository>
