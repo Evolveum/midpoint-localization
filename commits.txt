@@ -1,0 +1,17 @@
+6ac51b27b3 Role analysis advanced skeleton for processed objects categorization 1. Noise roles. 2. Noise users. 3. Unpopular roles. 4. Overly popular roles. 5. Unpopular users. 6. Overly popular users. 7. Analysis uniq properties (diff) 8. Manual User Object exclusion 9. Manual Role Object exclusion 10. Fix session-wizard visibility handler behaviour.
+63b69ac118 Role analysis categorization improvement 1. Improve data categorization. 2. Implement exclude functionality. 3. Fix incorrect data loading (reversing maps). 4. Add new excluded category for better understanding.
+9a3fae9a8c Role analysis improve object classification
+6ead72bbbc Outliers analysis gui improvement 1. Prepare gui for explanation 2. Fix incorrect user-permission table anomaly marking 3. Improve creating temporary clusters 4. Implement multi partition user-permission tableTap panel 5. Improve anomaly access table
+69c315bad7 outlier detection: outlier explanation templates
+244ca3a805 Outliers analysis improve explanation and overall GUI
+6b108ca822 outlier detection: explain multiple group by attributes
+457f8b6d1b outlier detection: unclassified page wording
+2a71730116 outlier detection: access name label
+d8f73f7835 outlier detection: better group by explanation message
+ac91f70ef8 Outlier detection improve explanation and add to widgets panels
+0fca4c6bbb outlier detection: renamed confidence to score, and other locale updates
+18be5885c4 outlier detection: simplified translations, removed obsolete
+927a0c5b2d outlier detection: added settings panel
+d40c632a0b Outlier detection improve object classification
+156b9ba66c Outlier detection improve access anomaly table 1. Make peer group and attribute analysis button visible by explanation category. 2. Remove redundant code functionalities, implement better anomaly structure, cleanup.
+1efdd34981 Outlier detection improve UX. 1. Implement session outlier collapsable table. 2. Outlier peer group panel is now expanded by default (TBD Scaling, Sorting). NOTE 1.: should be used for session, cluster all outliers panel and cluster overview, table is sortable and display anomalies via collapsable access column panel. NOTE 2.: Current version contains also old component (TBD)
