@@ -21,6 +21,14 @@ podTemplate(
                         resourceLimitCpu: '1',
                         resourceRequestMemory: '1Gi',
                         resourceLimitMemory: '1Gi'),
+                containerTemplate(
+                        name: 'tx',
+                        image: 'transifex/txcli:latest',
+                        command: 'cat',
+                        ttyEnabled: true,
+                        resourceRequestCpu: '200m',
+                        resourceRequestMemory: '256Mi'
+                ),
         ]
 ) {
     node(POD_LABEL) {
@@ -28,6 +36,47 @@ podTemplate(
             git branch: params.BRANCH ?: 'master',
                     url: 'https://github.com/Evolveum/midpoint-localization.git'
             echo "git checkout done..."
+        }
+        stage("transifex") {
+            container('tx') {
+                withCredentials([
+                        string(credentialsId: 'transifex-token', variable: 'TX_TOKEN'),
+                        string(credentialsId: 'github-token', variable: 'GIT_TOKEN')]) {
+                    sh """#!/bin/bash -ex
+                        tx --version
+                        
+                        # create ~/.transifexrc using the token, then pull all files and overwrite local
+                        tx login --token "$TX_TOKEN"
+                        tx pull -fa
+                        
+                        rm localization/Midpoint_en.properties
+                        mv localization/Midpoint_en_US.properties localization/Midpoint_en.properties
+                        rm localization/schema_en.properties
+                        mv localization/schema_en_US.properties localization/schema_en.properties
+                        
+                        # Remove all untracked files/dirs brought by tx
+                        git clean -fd
+            
+                        # Stage any changes to tracked files
+                        git add -A
+                        
+                        # If there are staged changes, commit and push
+                        if ! git diff --staged --quiet; then
+                            git config user.email "ci@jenkins"
+                            git config user.name "jenkins-ci"
+                            git commit -m "Automatic sync from Transifex, thanks to all Transifex contributors"
+                            
+                            # Avoid leaking token in logs
+                            set +x
+                            git remote set-url origin https://$GIT_TOKEN@github.com/Evolveum/midpoint-localization.git
+                            git push origin ${params.BRANCH ?: 'master'}
+                            set -x
+                        else
+                            echo "No tracked changes to commit."
+                        fi
+                    """
+                }
+            }
         }
         stage("build") {
             container('maven') {
